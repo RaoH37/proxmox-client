@@ -19,17 +19,17 @@ module Proxmox
     end
 
     def login
-      response = connector.post('extjs/access/ticket', need_auth: false, data: configuration.credentials_params)
+      response = connector.post(LOGIN_PATH, need_auth: false, data: configuration.credentials_params)
       update_tokens(response[:data])
     end
 
     def version
-      response = connector.get('extjs/version', data: { _dc: (Time.now.to_f * 1_000).to_i })
+      response = connector.get(VERSION_PATH, data: { _dc: (Time.now.to_f * 1_000).to_i })
       response.dig(:data, :version)
     end
 
     def ping
-      response = connector.post('json/access/ticket', data: { username: @username, password: @ticket })
+      response = connector.post(PING_PATH, data: { username: @username, password: @ticket })
       update_tokens(response[:data])
     end
 
