@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-require 'faraday'
-require 'json'
 require 'logger'
-require 'openssl'
-require 'uri'
 
 module Proxmox
   class << self

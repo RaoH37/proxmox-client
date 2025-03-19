@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require 'faraday'
+require 'json'
+require 'openssl'
+require 'uri'
+
 module Proxmox
   class Application
     attr_accessor :csrf, :ticket
